@@ -1,0 +1,6 @@
+What I had to do to get this working:
+
+nvm install 18.13.0
+npm install
+npm run hotloader
+npm start
