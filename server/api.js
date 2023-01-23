@@ -18,6 +18,8 @@ const auth = require("./auth");
 // api endpoints: all these paths will be prefixed with "/api/"
 const router = express.Router();
 
+
+
 //initialize socket
 const socketManager = require("./server-socket");
 
@@ -39,6 +41,21 @@ router.post("/initsocket", (req, res) => {
   res.send({});
 });
 
+router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
+  const newUser={
+    name: req.body.name,
+    instution: req.body.instution,
+    resume: req.body.resume,
+    linkedin: req.body.linkedin,
+    location: req.body.location,
+    bio: req.body.bio,
+    googleid: '12345'
+  }
+  
+  
+  //data.User.push(newUser);
+  res.send("submitted")
+})
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
