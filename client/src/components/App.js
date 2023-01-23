@@ -6,6 +6,8 @@ import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import Register from "./pages/Register.js";
 
+import NavBar   from "./modules/NavBar.js";
+
 import "../utilities.css";
 
 import { socket } from "../client-socket.js";
@@ -44,6 +46,7 @@ const App = () => {
 
   return (
     <>
+      <NavBar />
       <Router>
         <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
 	<Register path="/register" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
