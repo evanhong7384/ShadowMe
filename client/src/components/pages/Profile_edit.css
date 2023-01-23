@@ -1,0 +1,9 @@
+/* Fill me in :) */
+.personal_info {
+
+    margin: 2em;
+    width: 500 px;
+    text-align: center;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
