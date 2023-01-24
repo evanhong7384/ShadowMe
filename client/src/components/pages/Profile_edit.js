@@ -11,15 +11,20 @@ const GOOGLE_CLIENT_ID = "847255392628-tdlh0r7m9s9vq6isrb54ind9k7sk34hg.apps.goo
 
 
  const saveInfo = () =>{
-  
-  post('/api/pfedit',{name: document.getElementById("Name"),
-  institution: document.getElementById("Institutions"),
-  resume: document.getElementById("Resume"),
-  linkedin: document.getElementById("Linkedin"),
-  location: document.getElementById("Location"),
-  bio: document.getElementById("Bio")}).then((response)=>{
+  alert('hi')
+  console.log('h')
+  post("/api/pfedit",{name: document.getElementById("Name").value,
+  institution: document.getElementById("Institutions").value,
+  resume: document.getElementById("Resume").value,
+  linkedin: document.getElementById("Linkedin").value,
+  location: document.getElementById("Location").value,
+  bio: document.getElementById("Bio").value}).then((response)=>{
   alert(response);
-  
+  console.log('g')
+ }
+
+ ).finally(() => {
+  alert('fail');
  })   
 }
 
@@ -53,7 +58,7 @@ const Profile_edit = () => {
         
 
         <div> 
-          <button id='submit' type="submit"  onClick={saveInfo}>save</button>
+          <button id='submit' type="button"  onClick={saveInfo}>save</button>
         </div>
         
         
