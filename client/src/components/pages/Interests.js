@@ -58,6 +58,29 @@ import { medicalFields } from "./MedicalFields.js";
 import "./Medicalfieldsstyles.css";
 
 const Interests = () => {
+
+    const [checkedStateFields, setCheckedStateFields] = useState(
+        new Array(medicalFields.length).fill(false)
+      );
+    
+      const [checkedStateTasks, setCheckedStateTasks] = useState(
+        new Array(medicalTasks.length).fill(false)
+      );
+    
+      const firstSetOfCheckboxes = (position) => {
+        const updatedCheckedStateFields = checkedStateFields.map((item, index) =>
+          index === position ? !item : item
+        );
+        setCheckedStateFields(updatedCheckedStateFields);
+      };
+    
+      const secondSetOfCheckboxes = (position) => {
+        const updatedCheckedStateTasks = checkedStateTasks.map((item, index) =>
+          index === position ? !item : item
+        );
+        setCheckedStateTasks(updatedCheckedStateTasks);
+      };
+
     
       return (
         <>
@@ -75,7 +98,7 @@ const Interests = () => {
                           name={name}
                           value={name}
                           checked={checkedStateFields[index]}
-                          onChange={() => handleOnChangeFields(index)}
+                          onChange={() => firstSetOfCheckboxes(index)}
                         />
                         <label htmlFor={`checkbox-Fields-${index}`}>{name}</label>
                       </div>
@@ -99,7 +122,7 @@ const Interests = () => {
                           name={name}
                           value={name}
                           checked={checkedStateTasks[index]}
-                          onChange={() => handleOnChangeTasks(index)}
+                          onChange={() => secondSetOfCheckboxes(index)}
                         />
                         <label htmlFor={`checkbox-tasks-${index}`}>{name}</label>
                       </div>
