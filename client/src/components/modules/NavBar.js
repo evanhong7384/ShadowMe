@@ -21,8 +21,8 @@ const NavBar = (props) => {
       <Link to="/messages" className="NavBar-link">
         Messages
       </Link>
-      <Link to="/tools" className="NavBar-link">
-        Tools
+      <Link to="/profile_edit" className="NavBar-link">
+        Profile
       </Link>
       </div>
     </nav>
