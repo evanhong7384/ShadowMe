@@ -22,6 +22,7 @@ const router = express.Router();
 
 //initialize socket
 const socketManager = require("./server-socket");
+const user = require("./models/user");
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -41,13 +42,10 @@ router.post("/initsocket", (req, res) => {
   res.send({});
 });
 router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
-  const newUser={
-
-router.post("/pfedit", (req, res)=>{
-  console.log('fhf')
+  console.log(req.user.googleid)
   const newUser= new User( {
     name: req.body.name,
-    googleid: '12345',
+    googleid: req.user.googleid,
     instution: req.body.instution,
     resume: req.body.resume,
     linkedin: req.body.linkedin,
