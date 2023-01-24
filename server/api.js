@@ -40,22 +40,25 @@ router.post("/initsocket", (req, res) => {
     socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
 });
-
 router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
   const newUser={
+
+router.post("/pfedit", (req, res)=>{
+  console.log('fhf')
+  const newUser= new User( {
     name: req.body.name,
+    googleid: '12345',
     instution: req.body.instution,
     resume: req.body.resume,
     linkedin: req.body.linkedin,
     location: req.body.location,
     bio: req.body.bio,
-    googleid: '12345'
-  }
+    
+  });
   
-  
-  //data.User.push(newUser);
-  res.send("submitted")
-})
+  newUser.save();
+  res.send(JSON.stringify({word:'submitted'}));
+});
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
