@@ -11,8 +11,6 @@ const GOOGLE_CLIENT_ID = "847255392628-tdlh0r7m9s9vq6isrb54ind9k7sk34hg.apps.goo
 
 
  const saveInfo = () =>{
-  alert('hi')
-  console.log('h')
   post("/api/pfedit",{name: document.getElementById("Name").value,
   institution: document.getElementById("Institutions").value,
   resume: document.getElementById("Resume").value,
@@ -20,10 +18,9 @@ const GOOGLE_CLIENT_ID = "847255392628-tdlh0r7m9s9vq6isrb54ind9k7sk34hg.apps.goo
   location: document.getElementById("Location").value,
   bio: document.getElementById("Bio").value}).then((response)=>{
   alert(response);
-  console.log('g')
  }
 
- ).finally(() => {
+ ).catch(() => {
   alert('fail');
  })   
 }
@@ -69,13 +66,9 @@ const Profile_edit = (userId, handleLogin, handleLogout) => {
         <input type="text" id="Bio" name="Bio"/>
         </label>
         
-
         <div> 
-          <button id='submit' type="button"  onClick={saveInfo}>save</button>
+          <button id='submit' type="button"  onClick={saveInfo}>Save</button>
         </div>
-        
-        
-        
     </div>
     </form>
     </GoogleOAuthProvider>
