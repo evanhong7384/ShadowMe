@@ -1,0 +1,19 @@
+.personal_info {
+  margin: auto;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  text-align: center;
+  width: 40%;
+}
+.personal_info label {
+  text-align: right;
+  display: block;
+}
+.personal_info input {
+  text-align: left;
+  margin-left: 1ex;
+  margin-top: 1ex;
+}
+button {
+  margin-top: 2ex;
+}
