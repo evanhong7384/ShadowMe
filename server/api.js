@@ -40,6 +40,8 @@ router.post("/initsocket", (req, res) => {
     socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
 });
+router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
+  const newUser={
 
 router.post("/pfedit", (req, res)=>{
   console.log('fhf')
