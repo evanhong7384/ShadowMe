@@ -24,6 +24,12 @@ const NavBar = (props) => {
       <Link to="/profile_edit" className="NavBar-link">
         Profile
       </Link>
+      <Link to="/interests" className="NavBar-link">
+        Interests
+      </Link>
+      <Link to="/logout" className="NavBar-link">
+        Logout
+      </Link>
       </div>
     </nav>
     </>
