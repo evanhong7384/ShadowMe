@@ -75,6 +75,10 @@ const Interests = () => {
               })}
             </ul>
           </div>
+          <div>
+        Other Interests: 
+        <input />
+      </div>
         </>
       );
     };
