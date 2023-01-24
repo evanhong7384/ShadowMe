@@ -72,6 +72,7 @@ module.exports = {
         target: "http://localhost:3000",
         ws: true,
       },
+      "/interests": "http://localhost:3000",
     },
   },
 };
