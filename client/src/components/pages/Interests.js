@@ -38,13 +38,13 @@ const Interests = () => {
               <li key={index}>
                 <input 
                   type="checkbox"
-                  id={`checkbox-Fields-${index}`}
+                  id={`checkbox-fields-${index}`}
                   name={name}
                   value={name}
                   checked={checkedStateFields[index]}
                   onChange={() => handleOnChangeFields(index)}
                 />
-                <label htmlFor={`checked-Fields-${index}`}>{name}</label>
+                <label htmlFor={`checkbox-fields-${index}`}>{name}</label>
               </li>
             )
           })}
