@@ -42,7 +42,7 @@ const Interests = () => {
                   name={name}
                   value={name}
                   checked={checkedStateFields[index]}
-                  onChange={() => firstSetOfCheckboxes(index)}
+                  onChange={() => handleOnChangeFields(index)}
                 />
                 <label htmlFor={`checked-Fields-${index}`}>{name}</label>
               </li>
@@ -64,7 +64,7 @@ const Interests = () => {
                       name={name}
                       value={name}
                       checked={checkedStateTasks[index]}
-                      onChange={() => secondSetOfCheckboxes(index)}
+                      onChange={() => handleOnChangeTasks(index)}
                     />
                     <label htmlFor={`checkbox-tasks-${index}`}>{name}</label>
                   </div>
