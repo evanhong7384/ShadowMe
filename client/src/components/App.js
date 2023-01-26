@@ -9,7 +9,7 @@ import Profile_edit from "./pages/Profile_edit.js";
 import Profile from "./pages/Profile.js";
 import Interests from "./pages/Interests.js";
 import NavBar   from "./modules/NavBar.js";
-import Interests from "./pages/Interests.js";
+
 
 import "../utilities.css";
 
