@@ -3,7 +3,7 @@ import { GoogleOAuthProvider, GoogleLogin, googleLogout } from "@react-oauth/goo
 //const User = require("./models/user");
 import "../../utilities.css";
 import "./Profile.css";
-import { post,get } from "../../utilities";
+import { post, get } from "../../utilities";
 //import "./Skeleton.css";
 
 //TODO: REPLACE WITH YOUR OWN CLIENT_ID
@@ -43,7 +43,6 @@ const Profile = (userId, handleLogin, handleLogout) => {
   const [LI, setLI] = useState("")
   
 
-
   useEffect(() => {
     console.log("HIII");
     get("/api/retrieve").then(response => {
@@ -76,35 +75,35 @@ const Profile = (userId, handleLogin, handleLogout) => {
     <form>
     <div className="personal_info">
       
-      <label for="Name">Name:
+      <label htmlFor="Name">Name:
         {Name}
           
       </label>
        
 
-        <label for="Institutions">Institutions:
+        <label htmlFor="Institutions">Institutions:
         {inst}
         </label>
 
-        <label for="Resume">Resume:
+        <label htmlFor="Resume">Resume:
  
          {Resume} 
      
         </label>
 
-        <label for="Linkedin">Linkedin:
+        <label htmlFor="Linkedin">Linkedin:
   
           {LI}
    
         </label>
 
-        <label for="Location">Location:
+        <label htmlFor="Location">Location:
  
           {Location}
    
         </label>
 
-        <label for="Bio">Bio:
+        <label htmlFor="Bio">Bio:
     
           {Bio}
      
