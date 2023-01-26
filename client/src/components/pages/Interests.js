@@ -8,7 +8,7 @@ const Interests = () => {
   const [checkedStateFields, setCheckedStateFields] = useState(
     new Array(medicalFields.length).fill(false)
   );
-
+console.log(checkedStateFields);
 
   const [checkedStateTasks, setCheckedStateTasks] = useState(
     new Array(medicalTasks.length).fill(false)

@@ -34,7 +34,10 @@ router.get("/whoami", (req, res) => {
 
   res.send(req.user);
 });
-
+/*User.findOne({googleid: req.user._id}).then(user => {
+user.medicalFields = 
+})
+  */
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
   if (req.user)
