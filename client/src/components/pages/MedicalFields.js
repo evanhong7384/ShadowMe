@@ -1,6 +1,6 @@
 export const medicalFields = [
   {
-    name: "General surgery"
+    name: "General Surgery"
   },
   {
     name: "Pediatrics"
@@ -24,7 +24,7 @@ export const medicalFields = [
     name: "Orthopedics"
   },
   {
-    name: "Physical therapy"
+    name: "Physical Therapy"
   },
   {
     name: "Psychiatry"
@@ -33,13 +33,13 @@ export const medicalFields = [
     name: "Dermatology"
   },
   {
-    name: "Obstetrics and gynaecology"
+    name: "Obstetrics and Gynaecology"
   },
   {
     name: "Anesthesiology"
   },
   {
-    name: "Public health"
+    name: "Public Health"
   },
   {
     name: "Ophthalmology"
@@ -60,7 +60,7 @@ export const medicalFields = [
     name: "Dentistry"
   },
   {
-    name: "Plastic surgery"
+    name: "Plastic Surgery"
   }
 ];
 
