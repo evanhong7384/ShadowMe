@@ -21,8 +21,11 @@ const NavBar = (props) => {
       <Link to="/messages" className="NavBar-link">
         Messages
       </Link>
-      <Link to="/profile_edit" className="NavBar-link">
+      <Link to="/profile" className="NavBar-link">
         Profile
+      </Link>
+      <Link to="/profile_edit" className="NavBar-link">
+        Edit
       </Link>
       <Link to="/interests" className="NavBar-link">
         Interests
