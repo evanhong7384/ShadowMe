@@ -52,7 +52,7 @@ const App = () => {
       <NavBar />
       <Router>
         {/* <Skeleton path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} /> */}
-	      <Register path="/register" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
+	      <Register path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <Profile_edit path="/profile_edit"/>
         <Profile path="/profile"/>
         <Interests path="/interests"/>
