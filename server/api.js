@@ -35,6 +35,11 @@ router.get("/whoami", (req, res) => {
 
   res.send(req.user);
 });
+router.get("/retrieve", (req,res) => {
+  console.log(req.user)
+  User.findOne({googleid: req.user.googleid}).then(response => {console.log(response);})
+  res.send(req.user)
+});
 
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
@@ -59,7 +64,7 @@ router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
   newUser.save();
   res.send(JSON.stringify({word:'submitted'}));
   */
- db.ShadowMe.updateOne({googleid: req.user.googleid},[{$set:{name: req.body.name, institution: req.body.institution, resume: req.body.resume, linkedin: req.body.linkedin, location: req.body.location, bio: req.body.bio} }]).then(
+ User.updateOne({googleid: req.user.googleid},[{$set:{name: req.body.name, institution: req.body.institution, resume: req.body.resume, linkedin: req.body.linkedin, location: req.body.location, bio: req.body.bio} }]).then(
   doc => {console.log(doc);}
  )
 
