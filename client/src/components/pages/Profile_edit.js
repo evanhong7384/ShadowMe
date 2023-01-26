@@ -43,41 +43,35 @@ const Profile_edit = (userId, handleLogin, handleLogout) => {
     <form>
     <div className="personal_info">
         <label for="Name">Name:
-        <input type="text" id="Name" name="Name" />
+            <input type="text" id="Name" name="Name" />
         </label>
 
         <label for="Institutions">Institutions:
-        <input type="text" id="Institutions" name="Institution"/>
+            <input type="text" id="Institutions" name="Institution"/>
         </label>
 
         <label for="Resume">Resume:
-        <input type="text" id="Resume" name="Resume"/>
+            <input type="text" id="Resume" name="Resume"/>
         </label>
 
         <label for="Linkedin">Linkedin:
-        <input type="text" id="Linkedin" name="Linkedin"/>
+            <input type="text" id="Linkedin" name="Linkedin"/>
         </label>
 
         <label for="Location">Location:
-        <input type="text" id="Location" name="Location"/>
+            <input type="text" id="Location" name="Location"/>
         </label>
 
         <label for="Bio">Bio:
-        <input type="text" id="Bio" name="Bio"/>
+            <input type="text" id="Bio" name="Bio"/>
         </label>
         
         <div> 
-          <button id='submit' type="button"  onClick={saveInfo}>Save</button>
+          <button id='submit' type="button" onClick={saveInfo}>Save</button>
         </div>
     </div>
     </form>
-    </GoogleOAuthProvider>
-    
-
-    
-
-
-    
+    </GoogleOAuthProvider>   
   );
 };
 

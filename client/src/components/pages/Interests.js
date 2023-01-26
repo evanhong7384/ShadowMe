@@ -49,7 +49,7 @@ console.log(checkedStateFields);
             )
           })}
         </ul>
-        <input type="submit" name="submit" id="fields"></input>
+        <input type="submit" name="submit" value="Save" id="fields"></input>
 
       </div>
       <div className="interests">
@@ -75,7 +75,7 @@ console.log(checkedStateFields);
             );
           })}
         </ul>
-        <input type="submit" name="submit" id="interests"></input>
+        <input type="submit" name="submit" value="Save" id="interests"></input>
       </div>
     </>
   );
