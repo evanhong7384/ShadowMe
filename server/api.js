@@ -43,6 +43,7 @@ router.post("/initsocket", (req, res) => {
 });
 router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
   console.log(req.user.googleid)
+  /*
   const newUser= new User( {
     name: req.body.name,
     googleid: req.user.googleid,
@@ -56,6 +57,17 @@ router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
   
   newUser.save();
   res.send(JSON.stringify({word:'submitted'}));
+  */
+ get("/api/whoami").then(response =>{
+  alert(response.name);
+  response.user.name=req.body.name
+ response.user.institution=req.body.institution
+ response.user.resume=req.body.resume
+ response.user.linkedin=req.body.linkedin
+ })
+ 
+ res.send(JSON.stringify({word:'submitted'}));
+
 });
 // |------------------------------|
 // | write your API methods below!|

@@ -8,6 +8,7 @@ import Register from "./pages/Register.js";
 import Profile_edit from "./pages/Profile_edit.js";
 import Profile from "./pages/Profile.js";
 import NavBar   from "./modules/NavBar.js";
+import Interests from "./pages/Interests.js";
 
 import "../utilities.css";
 
@@ -53,6 +54,7 @@ const App = () => {
 	<Register path="/register" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
   <Profile_edit path="/profile_edit"/>
   <Profile path="/profile"/>
+  <Interests path="/interests"/>
         <NotFound default />
       </Router>
     </>

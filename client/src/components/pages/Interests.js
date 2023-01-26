@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { medicalFields } from "./MedicalFields.js";
 import "./Medicalfieldsstyles.css";
