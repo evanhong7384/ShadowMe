@@ -30,7 +30,7 @@ const Interests = () => {
 
   return (
     <>
-      <div className="Fields">
+      <div className="fields">
         <h3>What Fields Are You Interested In?</h3>
         <ul className="medicalField-list">
           {medicalFields.map(({ name }, index) => {
@@ -49,8 +49,10 @@ const Interests = () => {
             )
           })}
         </ul>
+        <input type="submit" name="submit" id="fields"></input>
+
       </div>
-      <div className="Interests">
+      <div className="interests">
         <h3>What Tasks Are You Most Interested In Helping With?</h3>
         <ul className="medicalTask-list">
           {medicalTasks.map(({ name }, index) => {
@@ -73,6 +75,7 @@ const Interests = () => {
             );
           })}
         </ul>
+        <input type="submit" name="submit" id="interests"></input>
       </div>
     </>
   );
