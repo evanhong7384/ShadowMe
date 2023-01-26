@@ -30,7 +30,6 @@ const path = require("path"); // provide utilities for working with file and dir
 
 const api = require("./api");
 const auth = require("./auth");
-const interests = require("./interests");
 
 // socket stuff
 const socketManager = require("./server-socket");
@@ -74,8 +73,6 @@ app.use(auth.populateCurrentUser);
 // connect user-defined routes
 app.use("/api", api);
 
-app.use("/interests", interests);
-
 // load the compiled react files, which will serve /index.html and /bundle.js
 const reactPath = path.resolve(__dirname, "..", "client", "dist");
 app.use(express.static(reactPath));
@@ -104,7 +101,8 @@ app.use((err, req, res, next) => {
 // hardcode port to 3000 for now
 const port = process.env.PORT || 3000;
 const server = http.Server(app);
-socket.init(server);
+socketManager.init(server);
+console.log(port);
 
 server.listen(port, () => {
   console.log(`Server running on port: ${port}`);
