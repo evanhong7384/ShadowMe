@@ -23,6 +23,7 @@ const router = express.Router();
 //initialize socket
 const socketManager = require("./server-socket");
 const user = require("./models/user");
+const { db } = require("./models/user");
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -58,15 +59,12 @@ router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
   newUser.save();
   res.send(JSON.stringify({word:'submitted'}));
   */
- get("/api/whoami").then(response =>{
-  alert(response.name);
-  response.user.name=req.body.name
- response.user.institution=req.body.institution
- response.user.resume=req.body.resume
- response.user.linkedin=req.body.linkedin
- })
+ db.ShadowMe.updateOne({googleid: req.user.googleid},[{$set:{name: req.body.name, institution: req.body.institution, resume: req.body.resume, linkedin: req.body.linkedin, location: req.body.location, bio: req.body.bio} }]).then(
+  doc => {console.log(doc);}
+ )
+
  
- res.send(JSON.stringify({word:'submitted'}));
+//  res.send(JSON.stringify({word:'submitted'}));
 
 });
 // |------------------------------|
