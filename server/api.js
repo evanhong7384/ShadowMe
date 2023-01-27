@@ -35,10 +35,10 @@ router.get("/whoami", (req, res) => {
 
   res.send(req.user);
 });
+
 /*User.findOne({googleid: req.user._id}).then(user => {
-user.medicalFields = 
-})
-  */
+user.medicalFields = updatedCheckedStateFields
+});*/
 
 router.get("/retrieve", (req,res) => {
   console.log(req.user)
