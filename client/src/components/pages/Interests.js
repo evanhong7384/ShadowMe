@@ -1,14 +1,17 @@
 import React from "react";
 import { useState } from "react";
+import { GoogleOAuthProvider, GoogleLogin, googleLogout } from "@react-oauth/google";
 
 import { medicalFields, medicalTasks} from "./MedicalFields.js";
 import "./Medicalfieldsstyles.css";
 
-const Interests = () => {
+const GOOGLE_CLIENT_ID = "739879686608-gmd61blddrnga246qtek7129330hpt7j.apps.googleusercontent.com";
+
+const Interests = (userId, handleLogin, handleLogout) => {
   const [checkedStateFields, setCheckedStateFields] = useState(
     new Array(medicalFields.length).fill(false)
   );
-
+console.log(checkedStateFields);
 
   const [checkedStateTasks, setCheckedStateTasks] = useState(
     new Array(medicalTasks.length).fill(false)
@@ -27,8 +30,23 @@ const Interests = () => {
     );
     setCheckedStateTasks(updatedCheckedStateTasks);
   };
+  
+  
 
   return (
+    <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID}>
+      {userId ? (
+        <button
+          onClick={() => {
+            googleLogout();
+            handleLogout();
+          }}
+        >
+          Logout
+        </button>
+      ) : (
+        <GoogleLogin onSuccess={handleLogin} onError={(err) => console.log(err)} />
+      )}
     <>
       <div className="fields">
         <h3>What Fields Are You Interested In?</h3>
@@ -75,9 +93,11 @@ const Interests = () => {
             );
           })}
         </ul>
+        
         <input type="submit" name="submit" value="Save" id="interests"></input>
       </div>
     </>
+    </GoogleOAuthProvider>  
   );
 };
 

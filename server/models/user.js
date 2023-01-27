@@ -7,7 +7,8 @@ const UserSchema = new mongoose.Schema({
   resume: String,
   linkedin: String,
   location: String,
-  bio: String
+  bio: String,
+  medicalFields: [Boolean]
 });
 
 // compile model from schema
