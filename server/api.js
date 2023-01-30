@@ -37,9 +37,14 @@ router.get("/whoami", (req, res) => {
 });
 router.get("/retrieve",async (req,res) => {
 
-  const response = await User.findOne({googleid: req.user.googleid});
-  console.log(response);
-  res.send(response)
+  if (req.user.googleid) {
+    const response = await User.findOne({googleid: req.user.googleid});
+    console.log(response);
+    res.send(response);
+  } else {
+    response = '0';
+    res.send(response);
+  }
 });
 
 router.post("/initsocket", (req, res) => {
