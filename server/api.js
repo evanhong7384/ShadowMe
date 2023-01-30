@@ -37,7 +37,7 @@ router.get("/whoami", (req, res) => {
 });
 router.get("/retrieve",async (req,res) => {
 
-  if (req.user.googleid) {
+  if (req.user && req.user.googleid) {
     const response = await User.findOne({googleid: req.user.googleid});
     console.log(response);
     res.send(response);
