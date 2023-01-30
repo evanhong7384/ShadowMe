@@ -7,9 +7,13 @@ import Skeleton from "./pages/Skeleton.js";
 import Register from "./pages/Register.js";
 import Profile_edit from "./pages/Profile_edit.js";
 import Profile from "./pages/Profile.js";
+
 import Interests from "./pages/Interests.js";
 import NavBar   from "./modules/NavBar.js";
 
+import Logout from "./pages/Logout.js";
+import Messages from "./pages/Messages.js";
+import Search from "./pages/Search.js";
 
 import "../utilities.css";
 
@@ -54,7 +58,10 @@ const App = () => {
         <Register path="/" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId} />
         <Profile_edit path="/profile_edit"/>
         <Profile path="/profile"/>
+        <Search path="/search" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId}/>
         <Interests path="/interests" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId}/>
+        <Logout path="/logout" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId}/>
+        <Messages path="/messages" handleLogin={handleLogin} handleLogout={handleLogout} userId={userId}/>
         <NotFound default />
       </Router>
     </>
