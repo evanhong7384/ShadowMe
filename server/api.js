@@ -12,6 +12,8 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 
+const Message = require("./models/message");
+
 // import authentication library
 const auth = require("./auth");
 
@@ -50,35 +52,46 @@ router.get("/retrieve",async (req,res) => {
 
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
-  if (req.user)
+  if (req.user) {
     socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
+  }
   res.send({});
 });
 
-router.post("/message", auth.ensureLoggedIn, (req,res)=>{
-  const message = new Message({
-    recipient: req.body.recipient,
-    sender: {
-      googleid: req.user.googleid,
-      name: req.user.name,
-    },
-    content: req.body.content,
+router.post("/sendmessage", auth.ensureLoggedIn, (req, res) => {
+  console.log(req.user.googleid); // from
+  console.log(req.body.messageText); // text
+  console.log(req.body.messageTo); // to
+  
+  const newMessage = new Message({
+    messageText: req.body.messageText,
+    googleidFrom: req.user.googleid,
+    googleidTo: req.body.messageTo,
+    sentTime: new Date(),
+    readTime: 0
   });
-  message.save();
-  socketManager.getIo().emit("message", message);
-})
-
+});
 
 router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
-  console.log(req.user.googleid)
- User.updateOne({googleid: req.user.googleid},[{$set:{name: req.body.name, institution: req.body.institution, resume: req.body.resume, linkedin: req.body.linkedin, location: req.body.location, bio: req.body.bio} }]).then(
-  doc => {console.log(doc);}
- )
-
+  console.log(req.user.googleid);
+  
+  User.updateOne(
+    {googleid: req.user.googleid},
+    [{$set:{
+      name: req.body.name, 
+      institution: req.body.institution, 
+      resume: req.body.resume, 
+      linkedin: req.body.linkedin, 
+      location: req.body.location, 
+      bio: req.body.bio
+    }}]
+  ).then(
+    doc => {console.log(doc);}
+  );
  
-//  res.send(JSON.stringify({word:'submitted'}));
-
+  //res.send(JSON.stringify({word:'submitted'}));
 });
+
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|

@@ -113,7 +113,7 @@ const Profile_edit = (userId, handleLogin, handleLogout) => {
         </div>
     </div>
     </form>
-    </GoogleOAuthProvider>   
+    </GoogleOAuthProvider>
   );
 };
 
