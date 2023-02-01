@@ -24,6 +24,7 @@ const router = express.Router();
 const socketManager = require("./server-socket");
 const user = require("./models/user");
 const { db } = require("./models/user");
+const message = require("./models/message");
 
 router.post("/login", auth.login);
 router.post("/logout", auth.logout);
@@ -53,23 +54,23 @@ router.post("/initsocket", (req, res) => {
     socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
 });
+
+router.post("/message", auth.ensureLoggedIn, (req,res)=>{
+  const message = new Message({
+    recipient: req.body.recipient,
+    sender: {
+      googleid: req.user.googleid,
+      name: req.user.name,
+    },
+    content: req.body.content,
+  });
+  message.save();
+  socketManager.getIo().emit("message", message);
+})
+
+
 router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
   console.log(req.user.googleid)
-  /*
-  const newUser= new User( {
-    name: req.body.name,
-    googleid: req.user.googleid,
-    instution: req.body.instution,
-    resume: req.body.resume,
-    linkedin: req.body.linkedin,
-    location: req.body.location,
-    bio: req.body.bio,
-    
-  });
-  
-  newUser.save();
-  res.send(JSON.stringify({word:'submitted'}));
-  */
  User.updateOne({googleid: req.user.googleid},[{$set:{name: req.body.name, institution: req.body.institution, resume: req.body.resume, linkedin: req.body.linkedin, location: req.body.location, bio: req.body.bio} }]).then(
   doc => {console.log(doc);}
  )
