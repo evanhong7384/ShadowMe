@@ -53,8 +53,9 @@ router.post("/initsocket", (req, res) => {
     socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
   res.send({});
 });
+
 router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
-  console.log(req.user.googleid)
+  console.log(req.user.googleid);
   /*
   const newUser= new User( {
     name: req.body.name,
@@ -70,14 +71,24 @@ router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
   newUser.save();
   res.send(JSON.stringify({word:'submitted'}));
   */
- User.updateOne({googleid: req.user.googleid},[{$set:{name: req.body.name, institution: req.body.institution, resume: req.body.resume, linkedin: req.body.linkedin, location: req.body.location, bio: req.body.bio} }]).then(
-  doc => {console.log(doc);}
- )
-
+  
+  User.updateOne(
+    {googleid: req.user.googleid},
+    [{$set:{
+      name: req.body.name, 
+      institution: req.body.institution, 
+      resume: req.body.resume, 
+      linkedin: req.body.linkedin, 
+      location: req.body.location, 
+      bio: req.body.bio
+    }}]
+  ).then(
+    doc => {console.log(doc);}
+  );
  
-//  res.send(JSON.stringify({word:'submitted'}));
-
+  //res.send(JSON.stringify({word:'submitted'}));
 });
+
 // |------------------------------|
 // | write your API methods below!|
 // |------------------------------|
