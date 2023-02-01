@@ -12,6 +12,8 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 
+const Message = require("./models/message");
+
 // import authentication library
 const auth = require("./auth");
 
@@ -49,28 +51,28 @@ router.get("/retrieve",async (req,res) => {
 
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
-  if (req.user)
+  if (req.user) {
     socketManager.addUser(req.user, socketManager.getSocketFromSocketID(req.body.socketid));
+  }
   res.send({});
+});
+
+router.post("/sendmessage", auth.ensureLoggedIn, (req, res) => {
+  console.log(req.user.googleid); // from
+  console.log(req.body.messageText); // text
+  console.log(req.body.messageTo); // to
+  
+  const newMessage = new Message({
+    messageText: req.body.messageText,
+    googleidFrom: req.user.googleid,
+    googleidTo: req.body.messageTo,
+    sentTime: new Date(),
+    readTime: 0
+  });
 });
 
 router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
   console.log(req.user.googleid);
-  /*
-  const newUser= new User( {
-    name: req.body.name,
-    googleid: req.user.googleid,
-    instution: req.body.instution,
-    resume: req.body.resume,
-    linkedin: req.body.linkedin,
-    location: req.body.location,
-    bio: req.body.bio,
-    
-  });
-  
-  newUser.save();
-  res.send(JSON.stringify({word:'submitted'}));
-  */
   
   User.updateOne(
     {googleid: req.user.googleid},
