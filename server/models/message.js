@@ -5,7 +5,7 @@ const MessageSchema = new mongoose.Schema({
   googleidFrom: String,
   googleidTo: String,
   sentTime: Date,
-  readTime: Date,
+  readTime: Date
 });
 
 // compile model from schema
