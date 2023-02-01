@@ -29,7 +29,7 @@ const sendMessage = () =>
   }
 
 
-const Messages = (userId, handleLogin, handleLogout) => {
+const Messages = () => {
   return (
     <>
       <p>hi Messages!</p>

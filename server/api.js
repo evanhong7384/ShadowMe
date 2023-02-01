@@ -61,15 +61,24 @@ router.post("/initsocket", (req, res) => {
 router.post("/sendmessage", auth.ensureLoggedIn, (req, res) => {
   console.log(req.user.googleid); // from
   console.log(req.body.messageText); // text
-  console.log(req.body.messageTo); // to
+  console.log(req.body.googleidTo); // to
   
   const newMessage = new Message({
     messageText: req.body.messageText,
     googleidFrom: req.user.googleid,
-    googleidTo: req.body.messageTo,
+    googleidTo: req.body.googleidTo,
     sentTime: new Date(),
     readTime: 0
   });
+  /*
+  newMessage.save();
+
+  socketManager.getSocketFromUserID(req.user._id).emit("message", message);
+    if (req.user._id !== req.body.recipient._id) {
+      socketManager.getSocketFromUserID(req.body.recipient._id).emit("message", message);
+    }
+  res.send({})
+  */
 });
 
 router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{
