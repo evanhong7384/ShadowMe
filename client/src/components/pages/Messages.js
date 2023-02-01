@@ -1,15 +1,67 @@
-import React from "react";
-import { useState } from "react";
+import React, {useState, useEffect} from "react";
 import { GoogleOAuthProvider, GoogleLogin, googleLogout } from "@react-oauth/google";
 
+import { post,get } from "../../utilities";
+
 const GOOGLE_CLIENT_ID = "739879686608-gmd61blddrnga246qtek7129330hpt7j.apps.googleusercontent.com";
+
+
+const sendMessage = () => 
+  {
+    //alert('saveInfo()');
+    //alert(document.getElementById("Name").value);
+    post(
+      "/api/sendmessage",
+      {
+        messageText: document.getElementById("messageText").value,
+        googleidFrom: document.getElementById("googleidFrom").value,
+        googleidTo: document.getElementById("googleidTo").value
+      }
+    ).then(
+      (response)=> {
+        //alert(response);
+      }
+    ).catch(
+      () => {
+        //alert('fail');
+      }
+    )   
+  }
+
 
 const Messages = (userId, handleLogin, handleLogout) => {
   return (
     <>
       <p>hi Messages!</p>
+
+      <form>
+        <div className="personal_info">
+          <label htmlFor="messageText">messageText:
+            <input type="text" id="messageText" name="messageText"/>
+          </label>
+        </div>
+        
+        <div className="personal_info">
+          <label htmlFor="googleidFrom">googleidFrom:
+            <input type="text" id="googleidFrom" name="googleidFrom"/>
+          </label>
+        </div>
+        
+        <div className="personal_info">
+          <label htmlFor="googleidTo">googleidTo:
+            <input type="text" id="googleidTo" name="googleidTo"/>
+          </label>
+        </div>
+        
+        <div> 
+          <button id='submit' type="button" onClick={sendMessage}>Send</button>
+        </div>
+      </form>
+      
     </>
   );
+  
+  
 }
 /*
   const [checkedStateFields, setCheckedStateFields] = useState(
