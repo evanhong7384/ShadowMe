@@ -6,8 +6,9 @@
   width: 40%;
 }
 .personal_info label {
-  text-align: right;
+  text-align: left;
   display: block;
+  margin-top: 0.1rem;
 }
 .personal_info input {
   text-align: left;
