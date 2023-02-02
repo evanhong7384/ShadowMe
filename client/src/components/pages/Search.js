@@ -32,15 +32,24 @@ const Search = (userId, handleLogin, handleLogout) => {
       <header>Connect</header>
 
       <label htmlFor="P1">
-        Name: {P1.name} Institution: {P1.institution} Location: {P1.location}
+        Name: <a href={"/messages?to=" + P1.name}>{P1.name}</a>
+        <br></br>
+        Institution: {P1.institution}
+        <br></br>
+        Location: {P1.location}
       </label>
+      
       <br></br>
       <br></br>
       <br></br>
       
 
       <label htmlFor="P2">
-        Name: {P2.name} Institution: {P2.institution} Location: {P2.location}
+        Name: <a href={"/messages?to=" + P2.name}>{P2.name}</a>
+        <br></br>
+        Institution: {P2.institution}
+        <br></br>
+        Location: {P2.location}
       </label>
 
       <br></br>
@@ -49,7 +58,11 @@ const Search = (userId, handleLogin, handleLogout) => {
       
 
       <label htmlFor="P3">
-        Name: {P3.name} Institution: {P3.institution} Location: {P3.location}
+        Name: <a href={"/messages?to=" + P3.name}>{P3.name}</a>
+        <br></br>
+        Institution: {P3.institution}
+        <br></br>
+        Location: {P3.location}
       </label>
       <br></br>
       <br></br>
@@ -57,7 +70,11 @@ const Search = (userId, handleLogin, handleLogout) => {
       
 
       <label htmlFor="P4">
-        Name: {P4.name} Institution: {P4.institution} Location: {P4.location}
+        Name: <a href={"/messages?to=" + P4.name}>{P4.name}</a>
+        <br></br>
+        Institution: {P4.institution}
+        <br></br>
+        Location: {P4.location}
       </label>
       <br></br>
       <br></br>
@@ -65,7 +82,11 @@ const Search = (userId, handleLogin, handleLogout) => {
       
 
       <label htmlFor="P5">
-        Name: {P5.name} Institution: {P5.institution} Location: {P5.location}
+        Name: <a href={"/messages?to=" + P5.name}>{P5.name}</a>
+        <br></br>
+        Institution: {P5.institution}
+        <br></br>
+        Location: {P5.location}
       </label>
     </>
 
