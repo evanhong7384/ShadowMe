@@ -5,6 +5,9 @@ import { post,get } from "../../utilities";
 
 const GOOGLE_CLIENT_ID = "739879686608-gmd61blddrnga246qtek7129330hpt7j.apps.googleusercontent.com";
 
+const queryParameters = new URLSearchParams(window.location.search)
+
+const messageTo = queryParameters.get('to');
 
 const sendMessage = () => 
   {
@@ -32,24 +35,20 @@ const sendMessage = () =>
 const Messages = () => {
   return (
     <>
-      <p>hi Messages!</p>
-
       <form>
-        <div className="personal_info">
-          <label htmlFor="messageText">messageText:
-            <input type="text" id="messageText" name="messageText"/>
+        <p>Send Message:</p>
+
+        <input type="hidden" id="googleidFrom" name="googleidFrom" defaultValue={GOOGLE_CLIENT_ID}/>
+
+        <div>
+          <label htmlFor="googleidTo">To:
+            <input type="text" id="googleidTo" name="googleidTo" defaultValue={messageTo}/>
           </label>
         </div>
-        
-        <div className="personal_info">
-          <label htmlFor="googleidFrom">googleidFrom:
-            <input type="text" id="googleidFrom" name="googleidFrom"/>
-          </label>
-        </div>
-        
-        <div className="personal_info">
-          <label htmlFor="googleidTo">googleidTo:
-            <input type="text" id="googleidTo" name="googleidTo"/>
+                
+        <div>
+          <label htmlFor="messageText">Message:
+            <textarea id="messageText" name="messageText"></textarea>
           </label>
         </div>
         
