@@ -1,14 +1,74 @@
-import React from "react";
-import { useState } from "react";
+import React, {useState, useEffect} from "react";
 import { GoogleOAuthProvider, GoogleLogin, googleLogout } from "@react-oauth/google";
+import { post, get } from "../../utilities";
 
 const GOOGLE_CLIENT_ID = "739879686608-gmd61blddrnga246qtek7129330hpt7j.apps.googleusercontent.com";
 
 const Search = (userId, handleLogin, handleLogout) => {
+  const [P1, setP1] = useState("");
+  const [P2, setP2] = useState("");
+  const [P3, setP3] = useState("")
+  const [P4, setP4] = useState("")
+  const [P5, setP5] = useState("")
+  const [P6, setP6] = useState("")
+  
+  useEffect(() => {
+    console.log("HIII");
+    get("/api/getall").then(response => {
+      console.log(response);
+      console.log(response[1]);
+      setP1(response[0]);
+      setP2(response[1]);
+      setP3(response[2]);
+      setP4(response[3]);
+      setP5(response[4]);
+      setP6(response[5]);
+      
+      // document.getElementById('institution').innerHTML = response.institution;
+    })
+  }, []);
   return (
     <>
-      <p>hi Search!</p>
+      <header>Connect</header>
+
+      <label htmlFor="P1">
+        Name: {P1.name} Institution: {P1.institution} Location: {P1.location}
+      </label>
+      <br></br>
+      <br></br>
+      <br></br>
+      
+
+      <label htmlFor="P2">
+        Name: {P2.name} Institution: {P2.institution} Location: {P2.location}
+      </label>
+
+      <br></br>
+      <br></br>
+      <br></br>
+      
+
+      <label htmlFor="P3">
+        Name: {P3.name} Institution: {P3.institution} Location: {P3.location}
+      </label>
+      <br></br>
+      <br></br>
+      <br></br>
+      
+
+      <label htmlFor="P4">
+        Name: {P4.name} Institution: {P4.institution} Location: {P4.location}
+      </label>
+      <br></br>
+      <br></br>
+      <br></br>
+      
+
+      <label htmlFor="P5">
+        Name: {P5.name} Institution: {P5.institution} Location: {P5.location}
+      </label>
     </>
+
   );
 }
 /*

@@ -50,6 +50,11 @@ router.get("/retrieve",async (req,res) => {
   }
 });
 
+router.get("/getall", async (req,res) => {
+  const response = await User.find();
+  res.send(response);
+})
+
 router.post("/initsocket", (req, res) => {
   // do nothing if user not logged in
   if (req.user) {
