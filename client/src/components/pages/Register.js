@@ -24,7 +24,16 @@ const Register = ({ userId, handleLogin, handleLogout }) => {
       )}
     <h1>Welcome to ShadowMe!</h1>
     <div className = "introduction">
-      The purpose of this website is connect doctors and premed students.
+      The purpose of this website is connect doctors and premed students. 
+    </div>
+    <div className = "introduction">
+    Students, complete your profile and find doctors who practice in your field of interest! 
+    </div>
+    <div className = "introduction">
+    Doctors, complete your profile and find students who are excited about helping you with clinical research, medical records,and more! 
+    </div>
+    <div className = "introduction">
+    This website provides an opportunity to message each other directly and coordinate times to meet.
     </div>
     </GoogleOAuthProvider>
   );
