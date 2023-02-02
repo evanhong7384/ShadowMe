@@ -87,13 +87,13 @@ const Profile = (userId, handleLogin, handleLogout) => {
 
         <label htmlFor="Resume">Resume:
  
-         {Resume} 
+         {Resume}
      
         </label>
 
         <label htmlFor="Linkedin">Linkedin:
   
-          {LI}
+          <a href={`//${LI}`}>{LI}</a>
    
         </label>
 

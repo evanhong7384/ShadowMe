@@ -70,15 +70,15 @@ router.post("/sendmessage", auth.ensureLoggedIn, (req, res) => {
     sentTime: new Date(),
     readTime: 0
   });
-  /*
+  
   newMessage.save();
 
-  socketManager.getSocketFromUserID(req.user._id).emit("message", message);
+  socketManager.getSocketFromUserID(req.user.googleid).emit("message", message);
     if (req.user._id !== req.body.recipient._id) {
       socketManager.getSocketFromUserID(req.body.recipient._id).emit("message", message);
     }
   res.send({})
-  */
+  
 });
 
 router.post("/pfedit", auth.ensureLoggedIn, (req, res)=>{

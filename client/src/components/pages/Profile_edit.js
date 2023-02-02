@@ -93,7 +93,7 @@ const Profile_edit = (userId, handleLogin, handleLogout) => {
         </label>
 
         <label htmlFor="Resume">Resume:
-            <input type="text" id="Resume" name="Resume" defaultValue={Resume}/>
+            <input type="text" id="Resume" accept="Resume/pdf" name="Resume" defaultValue={Resume}/>
         </label>
 
         <label htmlFor="Linkedin">Linkedin:
