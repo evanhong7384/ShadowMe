@@ -22,7 +22,10 @@ const Register = ({ userId, handleLogin, handleLogout }) => {
       ) : (
         <GoogleLogin onSuccess={handleLogin} onError={(err) => console.log(err)} />
       )}
-    <h1>Register</h1>
+    <h1>Welcome to ShadowMe!</h1>
+    <div className = "introduction">
+      The purpose of this website is connect doctors and premed students.
+    </div>
     </GoogleOAuthProvider>
   );
 };
