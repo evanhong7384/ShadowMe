@@ -1,17 +1,55 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GoogleOAuthProvider, GoogleLogin, googleLogout } from "@react-oauth/google";
 
 import { medicalFields, medicalTasks} from "./MedicalFields.js";
 import "./Medicalfieldsstyles.css";
 
+import { post,get } from "../../utilities";
+
 const GOOGLE_CLIENT_ID = "739879686608-gmd61blddrnga246qtek7129330hpt7j.apps.googleusercontent.com";
 
+const saveInfo = () => {
+    //alert('saveInfo()');
+    //alert(document.getElementById("Name").value);
+    post(
+      "/api/interestsedit",
+      {
+        medicalFields1: document.getElementById(`checkbox-fields-1`).value,
+        medicalFields2: document.getElementById(`checkbox-fields-2`).value,
+        medicalFields3: document.getElementById(`checkbox-fields-3`).value,
+        medicalFields4: document.getElementById(`checkbox-fields-4`).value,
+        medicalFields5: document.getElementById(`checkbox-fields-5`).value,
+      }
+    ).then(
+      (response)=> {
+console.log("Interests Posted")      }
+    ).catch(
+      () => {
+        //alert('fail');
+        console.log("Interests Failed to post")
+      }
+    )   
+  };
+
 const Interests = (userId, handleLogin, handleLogout) => {
+  useEffect(() => {
+    get("/api/retrieve").then(response => {
+      console.log(response);
+      /*
+      setLI(response.linkedin);
+      // document.getElementById('institution').innerHTML = response.institution;
+      */
+      //alert(response.name);
+      //Name = response.name;
+      setCheckedStateFields(response.medicalFields);
+    })
+  }, []);
+
   const [checkedStateFields, setCheckedStateFields] = useState(
     new Array(medicalFields.length).fill(false)
   );
-console.log(checkedStateFields);
+
 
   const [checkedStateTasks, setCheckedStateTasks] = useState(
     new Array(medicalTasks.length).fill(false)
@@ -20,8 +58,9 @@ console.log(checkedStateFields);
   const handleOnChangeFields = (position) => {
     const updatedCheckedStateFields = checkedStateFields.map((item, index) =>
       index === position ? !item : item
-    );
+      );
     setCheckedStateFields(updatedCheckedStateFields);
+    console.log(checkedStateFields);
   };
 
   const handleOnChangeTasks = (position) => {
@@ -30,6 +69,7 @@ console.log(checkedStateFields);
     );
     setCheckedStateTasks(updatedCheckedStateTasks);
   };
+
   
   
 
@@ -67,7 +107,7 @@ console.log(checkedStateFields);
             )
           })}
         </ul>
-        <input type="submit" name="submit" value="Save" id="fields"></input>
+        <button id='submit' type="button" onClick={saveInfo}>Save</button>
 
       </div>
       <div className="interests">
@@ -93,8 +133,9 @@ console.log(checkedStateFields);
             );
           })}
         </ul>
-        
-        <input type="submit" name="submit" value="Save" id="interests"></input>
+        <div> 
+          <button id='submit' type="button" onClick={saveInfo}>Save</button>
+        </div>
       </div>
     </>
     </GoogleOAuthProvider>  
