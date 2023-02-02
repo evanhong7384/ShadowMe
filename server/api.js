@@ -78,11 +78,14 @@ router.post("/sendmessage", auth.ensureLoggedIn, (req, res) => {
   
   newMessage.save();
 
+  /*
   socketManager.getSocketFromUserID(req.user.googleid).emit("message", message);
     if (req.user._id !== req.body.recipient._id) {
       socketManager.getSocketFromUserID(req.body.recipient._id).emit("message", message);
     }
   res.send({})
+  */
+  res.send();
   
 });
 
